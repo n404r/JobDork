@@ -6,11 +6,11 @@ JobDork is an advanced Google Dorking query builder specifically engineered for 
 
 ## Features
 
-* Precision Filtering: Build complex search strings targeting specific roles, locations, required skills, and experience levels.
-* Live Role Autocomplete: Instantly search and chain together multiple job titles from a massive predefined list of tech and corporate roles.
-* ATS Targeting: Search directly inside popular ATS platforms (Greenhouse, Lever, Workday, Ashby, BambooHR, SmartRecruiters, etc.) to find unlisted or fresh opportunities.
-* Board Exclusion: Automatically strip out noisy aggregate boards (LinkedIn, Indeed, Glassdoor) to drastically reduce spam and duplicate listings.
-* State Persistence: Your search configurations are saved locally in your browser so you never lose your active hunt parameters.
+- **Precision Filtering**: Build complex search strings targeting specific roles, locations, required skills, and experience levels.
+- **Live Role Autocomplete**: Instantly search and chain together multiple job titles from a massive predefined list of tech and corporate roles.
+- **ATS Targeting**: Search directly inside popular ATS platforms (Greenhouse, Lever, Workday, Ashby, BambooHR, SmartRecruiters, etc.) to find unlisted or fresh opportunities.
+- **Board Exclusion**: Automatically strip out noisy aggregate boards (LinkedIn, Indeed, Glassdoor) to drastically reduce spam and duplicate listings.
+- **State Persistence**: Your search configurations are saved locally in your browser so you never lose your active hunt parameters.
 
 ## For Visitors and Job Hunters
 
@@ -29,47 +29,54 @@ JobDork is built with modern web technologies, prioritizing a fast, client-side 
 
 ### Tech Stack
 
-* Framework: Next.js (App Router)
-* UI Library: React
-* Styling: Tailwind CSS
-* Language: TypeScript
-* Icons: Lucide React
+- **Framework**: Next.js (App Router)
+- **UI Library**: React
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Icons**: Lucide React
 
 ### Getting Started
 
 To run the application locally:
 
 1. Clone the repository:
+   ```bash
    git clone https://github.com/n404r/JobDork.git
+   ```
 
 2. Navigate into the directory:
+   ```bash
    cd jobdork
+   ```
 
 3. Install dependencies:
+   ```bash
    npm install
+   ```
 
 4. Start the development server:
+   ```bash
    npm run dev
+   ```
 
-5. Open http://localhost:3000 in your browser.
+5. Open `http://localhost:3000` in your browser.
 
 ### Project Structure
 
-* src/app: Contains the Next.js routing, global CSS, and main page layout.
-* src/components: Modular React components comprising the UI (SearchForm, AdvancedSettings, GeneratedSearch, etc.).
-* src/lib/dorkBuilder.ts: The core logic engine that transforms user state into a valid Google Dork string.
-* src/lib/constants.ts: The centralized database of ATS domains, startup boards, and excluded portals.
-* src/lib/storage.ts: Utility for handling local storage persistence.
+- `src/app`: Contains the Next.js routing, global CSS, and main page layout.
+- `src/components`: Modular React components comprising the UI (`SearchForm`, `AdvancedSettings`, `GeneratedSearch`, etc.).
+- `src/lib/dorkBuilder.ts`: The core logic engine that transforms user state into a valid Google Dork string.
+- `src/lib/constants.ts`: The centralized database of ATS domains, startup boards, and excluded portals.
+- `src/lib/roles.ts`: A predefined massive list of job roles used for autocomplete functionality.
+- `src/lib/storage.ts`: Utility for handling local storage persistence.
 
 ### Contributing
 
 Pull requests and fixes are welcome! If you want to add a new ATS platform or job board to the database:
 
-1. Open src/lib/constants.ts.
-2. Add the new platform to the SOURCES or EXCLUDE_PORTALS array.
-3. Ensure you provide the exact search domain (e.g., site:boards.greenhouse.io).
-4. If applicable, run the internal Python scripts to automatically fetch and embed the platform's base64 favicon.
+1. Open `src/lib/constants.ts`.
+2. Add the new platform to the `SOURCES` or `EXCLUDE_PORTALS` array.
+3. Ensure you provide the exact search domain (e.g., `site:boards.greenhouse.io`).
+4. Submit a PR!
 
-## License
-
-This project is open-source and available for anyone looking to improve their job hunting toolkit.
+Built with 🤍 by [Nischay Raj](https://github.com/n404r)
