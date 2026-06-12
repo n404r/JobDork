@@ -19,7 +19,7 @@ export function SearchMetrics({ state, dorkLength }: SearchMetricsProps) {
       </div>
       <div className="flex items-center gap-1.5">
         <span className="w-1.5 h-1.5 rounded-full bg-green-500/50"></span>
-        <span>Career Pages: {careerSources > 0 || state.careerMode === 'both' || state.careerMode === 'careers' ? 'Yes' : 'No'}</span>
+        <span>Career Pages: {careerSources > 0 ? 'Yes' : 'No'}</span>
       </div>
       <div className="flex items-center gap-1.5">
         <span className="w-1.5 h-1.5 rounded-full bg-red-500/50"></span>
