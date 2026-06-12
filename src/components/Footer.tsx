@@ -33,7 +33,7 @@ export function Footer() {
 
         {/* Credit Centered */}
         <div className="text-[12px] text-gray-400 font-medium flex items-center gap-1.5">
-          Created with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> by <a href="https://github.com/n404r" target="_blank" rel="noreferrer" className="text-white hover:text-[#05DF72] transition-colors ml-0.5">Nischay Raj</a>
+          Created with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> by <a href="https://github.com/n404r" target="_blank" rel="noreferrer" className="text-white hover:text-[#05DF72] transition-colors ml-0.5">Nischay</a>
         </div>
 
       </div>

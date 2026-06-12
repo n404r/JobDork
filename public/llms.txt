@@ -33,4 +33,4 @@ By searching the ATS domains directly using Google Dorks, job seekers can:
 - BamboHR (`bamboohr.com/careers`)
 
 ## Contact
-Open source and maintained by Nischay Raj. Contributions welcome at https://github.com/n404r/JobDork.
+Open source and maintained by Nischay. Contributions welcome at https://github.com/n404r/JobDork.

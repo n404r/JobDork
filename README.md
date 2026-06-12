@@ -90,5 +90,5 @@ Pull requests and fixes are always welcome! To add a new ATS platform or job boa
 ---
 
 <p align="center">
-  Built with ❤️ by <a href="https://github.com/n404r">Nischay Raj</a>
+  Built with ❤️ by <a href="https://github.com/n404r">Nischay</a>
 </p>
