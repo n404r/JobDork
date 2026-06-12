@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #05070d;
+    --foreground: #ffffff;
+  }
+
+  body {
+    color: var(--foreground);
+    background: #0a0f1a;
+    background-image: 
+      radial-gradient(circle at top center, rgba(255,255,255,0.03), transparent 70%),
+      linear-gradient(180deg, #0a0f1a 0%, #05070d 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    zoom: 1.25;
+  }
+}
