@@ -29,15 +29,15 @@ export function Header() {
               href="https://github.com/n404r/JobDork" 
               target="_blank" 
               rel="noreferrer" 
-              className="flex items-center justify-center p-1.5 rounded-md border border-white/10 bg-transparent hover:bg-white/5 hover:border-white/20 transition-all"
+              className="flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-transparent hover:bg-white/5 hover:border-white/20 transition-all"
               title="GitHub Repository"
             >
-              <img src="/github.svg" alt="GitHub" className="w-6 h-6 opacity-80 hover:opacity-100 transition-opacity" />
+              <img src="/github.svg" alt="GitHub" className="w-[20px] h-[20px] opacity-80 hover:opacity-100 transition-opacity" />
             </a>
           </div>
           <button 
             onClick={() => setHelpOpen(true)}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-white/10 bg-transparent text-gray-400 text-[13px] font-medium hover:bg-white/5 hover:text-gray-200 transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-3 h-9 rounded-md border border-white/10 bg-transparent text-gray-400 text-[13px] font-medium hover:bg-white/5 hover:text-gray-200 transition-colors"
           >
             <HelpCircle className="w-4 h-4" />
             <span className="hidden sm:inline">What are Dorks?</span>

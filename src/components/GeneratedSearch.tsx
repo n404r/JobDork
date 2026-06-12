@@ -30,7 +30,7 @@ export function GeneratedSearch({ state, dorkString, onClear }: GeneratedSearchP
 
   return (
     <div className="bg-[#05070A] border border-white/10 rounded-2xl shadow-xl flex flex-col h-full">
-      <div className="flex items-center justify-between p-5 border-b border-white/5 bg-white/[0.01]">
+      <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-white/5 bg-white/[0.01]">
         <div>
           <h2 className="text-sm font-bold tracking-wide uppercase text-white flex items-center gap-2">
             <span className="text-green-400 font-mono text-xs">04</span> Generated Search
@@ -54,14 +54,10 @@ export function GeneratedSearch({ state, dorkString, onClear }: GeneratedSearchP
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-x-6 gap-y-2 px-5 py-3 border-b border-white/5 bg-white/[0.01]">
+      <div className="flex flex-wrap gap-x-6 gap-y-2 px-3.5 sm:px-5 py-3 border-b border-white/5 bg-white/[0.01]">
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
           <span className="text-[11px] font-medium text-gray-400">ATS Sources: <span className="text-white">{includedSourcesCount}</span></span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
-          <span className="text-[11px] font-medium text-gray-400">Career Pages: <span className="text-white">{state.careerMode === 'both' ? 'Yes' : state.careerMode === 'careers' ? 'Only' : 'No'}</span></span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span>
@@ -73,7 +69,7 @@ export function GeneratedSearch({ state, dorkString, onClear }: GeneratedSearchP
         </div>
       </div>
 
-      <div className="p-5 font-mono text-[13px] leading-relaxed text-gray-300 flex-1 break-words whitespace-pre-wrap">
+      <div className="p-3.5 sm:p-5 font-mono text-[13px] leading-relaxed text-gray-300 flex-1 break-words whitespace-pre-wrap">
         {!dorkString ? (
           <span className="text-gray-600 italic">Start typing to generate your search strategy...</span>
         ) : (
@@ -124,9 +120,9 @@ export function GeneratedSearch({ state, dorkString, onClear }: GeneratedSearchP
             href={`https://www.google.com/search?btnI=1&q=${encodeURIComponent(dorkString)}`}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-[#05DF72]/20 bg-[#05DF72]/10 text-[#05DF72] text-[13px] font-semibold hover:bg-[#05DF72]/20 hover:text-[#05DF72] transition-all"
+            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-white/10 bg-transparent text-gray-300 text-[13px] font-semibold hover:bg-white/5 hover:text-white transition-all"
           >
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-4 h-4 text-gray-400" />
             Lucky
           </a>
         </div>

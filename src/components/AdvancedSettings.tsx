@@ -10,7 +10,7 @@ interface AdvancedSettingsProps {
   updateState: (updates: Partial<SearchState>) => void;
 }
 
-const DISPLAY_LIMIT = 9;
+const DISPLAY_LIMIT = 6;
 
 export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) {
   const [showAllSources, setShowAllSources] = useState(false);
@@ -35,10 +35,10 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
 
   return (
     <div className="mb-4">
-      <h2 className="text-sm font-bold tracking-wide uppercase text-white flex items-center justify-center gap-2 mb-3">
+      <h2 className="text-sm font-bold tracking-wide uppercase text-white flex items-center justify-start gap-2 mb-3 pl-1">
        Advanced Settings
       </h2>
-      <div className="bg-[#0a0f1a] border border-white/5 rounded-xl p-5 shadow-xl">
+      <div className="bg-[#0a0f1a] border border-white/5 rounded-xl p-3.5 sm:p-5 shadow-xl">
         <div className="flex flex-col gap-5">
         {/* Included Sources */}
         <div>
@@ -50,7 +50,7 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
               <button onClick={() => updateState({ includedSources: [] })} className="text-gray-400 hover:text-gray-200 hover:underline">Clear</button>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
             {visibleSources.map(s => {
               const isChecked = state.includedSources.includes(s.id);
               return (
@@ -102,7 +102,7 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
               <button onClick={() => updateState({ excludedBoards: [] })} className="text-gray-400 hover:text-gray-200 hover:underline">Clear</button>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
             {visibleExclusions.map(p => {
               const isChecked = state.excludedBoards.includes(p.id);
               return (

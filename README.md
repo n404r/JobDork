@@ -7,8 +7,8 @@ JobDork is an advanced Google Dorking query builder specifically engineered for 
 ## Features
 
 * Precision Filtering: Build complex search strings targeting specific roles, locations, required skills, and experience levels.
-* ATS Targeting: Search directly inside popular ATS platforms (Greenhouse, Lever, Workday, Ashby, BambooHR, Darwinbox, etc.) to find unlisted or fresh opportunities.
-* Startup & Career Pages: Dedicated hunting modes for startup ecosystems and direct company "join-us" pages.
+* Live Role Autocomplete: Instantly search and chain together multiple job titles from a massive predefined list of tech and corporate roles.
+* ATS Targeting: Search directly inside popular ATS platforms (Greenhouse, Lever, Workday, Ashby, BambooHR, SmartRecruiters, etc.) to find unlisted or fresh opportunities.
 * Board Exclusion: Automatically strip out noisy aggregate boards (LinkedIn, Indeed, Glassdoor) to drastically reduce spam and duplicate listings.
 * State Persistence: Your search configurations are saved locally in your browser so you never lose your active hunt parameters.
 
@@ -16,11 +16,10 @@ JobDork is an advanced Google Dorking query builder specifically engineered for 
 
 Using JobDork is incredibly simple:
 
-1. Input your target role and desired location.
-2. Add any specific keywords or mandatory skills you possess.
-3. Select which ATS platforms or startup boards you want to target in the Advanced Settings.
-4. Click to copy the generated Google Dork query.
-5. Paste the query directly into Google Search.
+1. Start typing your target roles in the autocomplete box (e.g., "Software Engineer", "Frontend Developer").
+2. Add any specific keywords, locations, or mandatory skills you possess.
+3. Select which ATS platforms you want to target in the Advanced Settings.
+4. Click the **Google**, **Bing**, or **Lucky** button to execute your query instantly, or copy the raw Dork string.
 
 This method bypasses the standard filtering algorithms of major job platforms, often revealing positions hours or days before they are widely indexed or promoted.
 

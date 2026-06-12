@@ -9,7 +9,6 @@ import { Search } from "lucide-react";
 
 import { Header } from "@/components/Header";
 import { SearchForm } from "@/components/SearchForm";
-import { CareerPageHunter } from "@/components/CareerPageHunter";
 import { AdvancedSettings } from "@/components/AdvancedSettings";
 import { GeneratedSearch } from "@/components/GeneratedSearch";
 
@@ -83,21 +82,20 @@ function JobDorkContent() {
   const dorkString = plainDorkString(state);
 
   return (
-    <main className="max-w-[1400px] mx-auto px-4 sm:px-6 pt-2 pb-6">
+    <main className="max-w-[1400px] mx-auto px-3 sm:px-6 pt-2 pb-6">
       <Header />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-4 items-start mt-2">
         
         {/* Left Column (Builder) */}
-        <div className="lg:col-span-8 flex flex-col gap-6">
+        <div className="lg:col-span-8 flex flex-col gap-2">
           <SearchForm state={state} updateState={updateState} />
           <AdvancedSettings state={state} updateState={updateState} />
         </div>
 
-        {/* Right Column (Sidebar / Output) */}
-        <div className="lg:col-span-4 flex flex-col gap-6 sticky top-6">
+        {/* Right Column - Results */}
+        <div className="lg:col-span-4 flex flex-col gap-2 lg:sticky lg:top-4">
           <GeneratedSearch state={state} dorkString={dorkString} onClear={handleClear} />
-          <CareerPageHunter state={state} updateState={updateState} />
         </div>
 
       </div>
@@ -111,8 +109,8 @@ function JobDorkContent() {
         </p>
       </footer>
 
-      {/* Floating Search Actions */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+      {/* Floating Search Actions - Mobile Only */}
+      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50 lg:hidden">
         
         {/* Premium Animated Hint Tooltip */}
         <div 

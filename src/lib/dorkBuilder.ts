@@ -14,7 +14,10 @@ export function buildDorkParts(state: SearchState): { type: string, value: strin
 
   // 1. Job title + keywords
   const titleTerms: string[] = [];
-  if (state.role) titleTerms.push(`"${state.role.trim()}"`);
+  if (state.role) {
+    const rawRoles = splitList(state.role);
+    rawRoles.forEach(r => titleTerms.push(quoteIfMulti(r)));
+  }
   
   const keywords = splitList(state.keywords);
   keywords.forEach(k => titleTerms.push(quoteIfMulti(k)));
@@ -74,33 +77,17 @@ export function buildDorkParts(state: SearchState): { type: string, value: strin
     parts.push({ type: 'group', value: '("careers" OR "jobs" OR "join us")' });
   }
 
-  // 5. Sources (Career Mode + ATS)
+  // 5. Sources (ATS Platforms)
   // Only add these if we're not targeting a specific company
   if (!state.company) {
     const includedSites: string[] = [];
     
-    // Career mode logic
-    if (state.careerMode === "careers" || state.careerMode === "both") {
-      includedSites.push("inurl:careers OR inurl:jobs OR inurl:join-us OR inurl:work-with-us OR inurl:hiring OR intitle:careers OR intitle:jobs");
-    } else if (state.careerMode === "startup") {
-      includedSites.push('site:notion.site OR site:notion.so OR site:wellfound.com');
-    } else if (state.careerMode === "yc") {
-      includedSites.push('"y combinator" OR "yc alumni"'); // Simplified YC logic
-    } else if (state.careerMode === "recently-funded") {
-      includedSites.push('"series a" OR "seed" OR "series b" "funding"');
-    }
-
-    // ATS Platforms
-    if (state.careerMode === "ats" || state.careerMode === "both" || state.careerMode === "startup") {
-      SOURCES.forEach(source => {
-        if (state.includedSources.includes(source.id)) {
-          // Prevent duplicating the generic career pages if already added
-          if (source.id !== 'career_pages') {
-            includedSites.push(source.site);
-          }
-        }
-      });
-    }
+    // Add explicitly selected ATS sources
+    SOURCES.forEach(source => {
+      if (state.includedSources.includes(source.id)) {
+        includedSites.push(source.site);
+      }
+    });
 
     if (includedSites.length) {
       parts.push({ type: 'group', value: `(${includedSites.join(' OR ')})` });

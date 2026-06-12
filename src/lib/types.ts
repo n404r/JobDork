@@ -9,8 +9,6 @@ export interface SearchState {
   experienceLevels: string[];
   workTypes: string[];
 
-  // Career Page Hunter Mode
-  careerMode: "ats" | "careers" | "both" | "startup" | "yc" | "recently-funded";
 
   // Sources
   includedSources: string[]; // List of source names or IDs
@@ -41,8 +39,7 @@ export const defaultSearchState: SearchState = {
   company: "",
   experienceLevels: [],
   workTypes: [],
-  careerMode: "both",
-  includedSources: [], // Will be populated from default constants
+  includedSources: ["greenhouse", "lever", "ashby", "workday", "bamboohr", "smartrecruiters"], // Default to top ATS boards
   excludedBoards: [], // Will be populated from default constants
   exactPhrase: false,
   salaryMentioned: false,
