@@ -55,7 +55,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
         </h2>
         <button 
           onClick={() => updateState(defaultSearchState)}
-          className="text-[11px] font-bold text-red-400 hover:text-red-300 px-2 py-1 bg-red-400/10 hover:bg-red-400/20 rounded transition-colors uppercase tracking-wider"
+          className="text-xs font-bold text-red-400 hover:text-red-300 px-2 py-1 bg-red-400/10 hover:bg-red-400/20 rounded transition-colors uppercase tracking-wider"
         >
           Reset All
         </button>
@@ -72,7 +72,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
                 value={state.role}
                 onChange={(e) => updateState({ role: e.target.value })}
                 placeholder="e.g. Software Engineer, Frontend"
-                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-[13px] font-medium transition-all outline-none
+                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-sm font-medium transition-all outline-none
                   ${state.role ? "border-[#05DF72] text-[#05DF72]" : "border-white/10 text-white focus:border-white/30 focus:ring-1 focus:ring-white/10"}
                 `}
               />
@@ -82,7 +82,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
                     <button
                       key={r}
                       onClick={() => handleRoleSelect(r)}
-                      className="w-full text-left px-3 py-2 text-[12px] font-medium text-gray-300 hover:bg-[#05DF72]/10 hover:text-[#05DF72] transition-colors"
+                      className="w-full text-left px-3 py-2 text-xs font-medium text-gray-300 hover:bg-[#05DF72]/10 hover:text-[#05DF72] transition-colors"
                     >
                       {r}
                     </button>
@@ -97,7 +97,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
                 value={state.company}
                 onChange={(e) => updateState({ company: e.target.value })}
                 placeholder="cloudflare.com"
-                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-[13px] font-medium transition-all outline-none
+                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-sm font-medium transition-all outline-none
                   ${state.company ? "border-[#05DF72] text-[#05DF72]" : "border-white/10 text-white focus:border-white/30 focus:ring-1 focus:ring-white/10"}
                 `}
               />
@@ -113,7 +113,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
               <select
                 value={state.location}
                 onChange={(e) => updateState({ location: e.target.value })}
-                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-[13px] font-medium transition-all outline-none appearance-none
+                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-sm font-medium transition-all outline-none appearance-none
                   ${state.location !== "worldwide" ? "border-[#05DF72] text-[#05DF72]" : "border-white/10 text-white focus:border-white/30 focus:ring-1 focus:ring-white/10"}
                 `}
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236B7280' d='M1 1l4 4 4-4'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
@@ -131,7 +131,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
                 value={state.customLocation}
                 onChange={(e) => updateState({ customLocation: e.target.value })}
                 placeholder="Bengaluru, etc"
-                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-[13px] font-medium transition-all outline-none
+                className={`w-full px-3 py-2 rounded-lg border bg-[#121826] text-sm font-medium transition-all outline-none
                   ${state.customLocation ? "border-[#05DF72] text-[#05DF72]" : "border-white/10 text-white focus:border-white/30 focus:ring-1 focus:ring-white/10"}
                 `}
               />
@@ -154,7 +154,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
                   }`}>
                     <Check className={`w-2.5 h-2.5 text-[#0a0f1a] transition-opacity ${isChecked ? "opacity-100" : "opacity-0"}`} strokeWidth={3} />
                   </div>
-                  <span className={`text-[12px] font-medium transition-colors ${isChecked ? "text-[#05DF72]" : "text-gray-400 group-hover:text-gray-300"}`}>
+                  <span className={`text-xs font-medium transition-colors ${isChecked ? "text-[#05DF72]" : "text-gray-400 group-hover:text-gray-300"}`}>
                     {wt.label}
                   </span>
                 </label>
@@ -173,7 +173,7 @@ export function SearchForm({ state, updateState }: SearchFormProps) {
                 <button
                   key={exp}
                   onClick={() => toggleExp(exp)}
-                  className={`px-2.5 py-1 rounded border text-[11px] font-medium transition-all ${
+                  className={`px-2.5 py-1 rounded border text-xs font-medium transition-all ${
                     active 
                       ? "bg-[#05DF72] text-[#0a0f1a] border-[#05DF72]" 
                       : "bg-[#121826] border-white/10 text-gray-400 hover:border-white/30 hover:text-white"

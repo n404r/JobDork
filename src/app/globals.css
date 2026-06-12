@@ -5,6 +5,10 @@
 }
 
 @layer base {
+  html {
+    font-size: 125%;
+  }
+
   :root {
     --background: #05070d;
     --foreground: #ffffff;
@@ -18,6 +22,5 @@
       linear-gradient(180deg, #0a0f1a 0%, #05070d 100%);
     background-attachment: fixed;
     min-height: 100vh;
-    zoom: 1.25;
   }
 }
