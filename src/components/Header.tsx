@@ -1,25 +1,28 @@
 "use client";
 
+import Link from "next/link";
 import { Search, HelpCircle, X } from "lucide-react";
 import { useState } from "react";
 
-export function Header() {
+export function Header({ h1Override }: { h1Override?: string | boolean }) {
   const [isHelpOpen, setHelpOpen] = useState(false);
+
+  const LogoTag = h1Override ? "h2" : "h1";
 
   return (
     <>
       <header className="flex items-center justify-between mb-5 border-b border-white/5 pb-4">
         {/* Left */}
-        <div className="flex items-center gap-4">
-          <img src="/logo.png" alt="JobDork Logo" className="w-12 h-12 shrink-0 object-contain" />
+        <a href="/" className="flex items-center gap-3 sm:gap-4 select-none hover:opacity-90 transition-opacity">
+          <img src="/logo.png" alt="JobDork Logo" className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 object-contain" />
           <div className="flex flex-col justify-center mt-1">
-            <h1 className="text-3xl font-black tracking-tight flex items-baseline m-0 leading-none">
+            <LogoTag className="text-2xl sm:text-3xl font-black tracking-tight flex items-baseline m-0 leading-none">
               <span className="text-white">Job</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4facfe] to-[#8b5cf6]">Dork</span>
-            </h1>
-            <p className="hidden sm:block text-[10px] font-bold text-gray-400 tracking-[0.2em] mt-2 uppercase leading-none">Find hidden jobs others can't.</p>
+            </LogoTag>
+            <h2 className="hidden sm:block text-[10px] font-bold text-gray-400 tracking-[0.2em] mt-2 uppercase leading-none">Find hidden jobs others can't.</h2>
           </div>
-        </div>
+        </a>
 
         {/* Right */}
         <div className="flex items-center gap-4">

@@ -1,164 +1,57 @@
 "use client";
 
-import { Suspense, useEffect, useState, useCallback } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { SearchState, defaultSearchState } from "@/lib/types";
-import { LocalSearchStorage } from "@/lib/storage";
-import { plainDorkString } from "@/lib/dorkBuilder";
-import { Search } from "lucide-react";
+import { Suspense } from "react";
+import { JobDorkContent } from "@/components/JobDorkContent";
+import { FAQAccordion } from "@/components/FAQAccordion";
 
-import { Header } from "@/components/Header";
-import { SearchForm } from "@/components/SearchForm";
-import { AdvancedSettings } from "@/components/AdvancedSettings";
-import { GeneratedSearch } from "@/components/GeneratedSearch";
-
-const STORAGE_KEY = "main";
-
-function JobDorkContent() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const [state, setState] = useState<SearchState>(defaultSearchState);
-  const [mounted, setMounted] = useState(false);
-  const [showFloatingHint, setShowFloatingHint] = useState(false);
-
-  useEffect(() => {
-    // Elegant slide-in after load
-    const t1 = setTimeout(() => setShowFloatingHint(true), 600);
-    const t2 = setTimeout(() => setShowFloatingHint(false), 8000);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, []);
-
-  useEffect(() => {
-    let initialState = { ...defaultSearchState };
-    const stored = LocalSearchStorage.load(STORAGE_KEY);
-    if (stored) initialState = stored;
-
-    const urlRole = searchParams.get("role");
-    const urlLocation = searchParams.get("location");
-    const urlPreset = searchParams.get("preset");
-
-    if (urlRole !== null) initialState.role = urlRole;
-    if (urlLocation !== null) initialState.location = urlLocation;
-
-    setState(initialState);
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    LocalSearchStorage.save(STORAGE_KEY, state);
-
-    const params = new URLSearchParams(searchParams.toString());
-    
-    if (state.role) params.set("role", state.role);
-    else params.delete("role");
-
-    if (state.location && state.location !== "worldwide") params.set("location", state.location);
-    else params.delete("location");
-
-    const newQuery = params.toString();
-    const currentQuery = searchParams.toString();
-    
-    if (newQuery !== currentQuery) {
-      router.replace(`${pathname}?${newQuery}`, { scroll: false });
-    }
-  }, [state, mounted, router, pathname, searchParams]);
-
-  const updateState = useCallback((updates: Partial<SearchState>) => {
-    setState(prev => {
-      return { ...prev, ...updates };
-    });
-  }, []);
-
-  const handleClear = useCallback(() => {
-    setState(defaultSearchState);
-    router.replace(pathname, { scroll: false });
-  }, [router, pathname]);
-
-  if (!mounted) return null;
-
-  const dorkString = plainDorkString(state);
-
-  return (
-    <main className="max-w-[1400px] mx-auto px-3 sm:px-6 pt-2 pb-6">
-      <Header />
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-4 items-start mt-2">
-        
-        {/* Left Column (Builder) */}
-        <div className="lg:col-span-8 flex flex-col gap-2">
-          <SearchForm state={state} updateState={updateState} />
-          <AdvancedSettings state={state} updateState={updateState} />
-        </div>
-
-        {/* Right Column - Results */}
-        <div className="lg:col-span-4 flex flex-col gap-2 lg:sticky lg:top-4">
-          <GeneratedSearch state={state} dorkString={dorkString} onClear={handleClear} />
-        </div>
-
-      </div>
-
-      <footer className="mt-10 flex flex-col items-center justify-center gap-1.5 border-t border-white/5 pt-5 pb-2 text-center">
-        <p className="text-sm text-gray-500 font-medium">
-          Tip: Target specific companies for the most accurate results.
-        </p>
-        <p className="text-[13px] text-gray-500 font-medium">
-          Built with 🤍 by <a href="https://github.com/n404r" target="_blank" rel="noreferrer" className="text-[#05DF72] hover:underline font-semibold">Nischay Raj</a>
-        </p>
-      </footer>
-
-      {/* Floating Search Actions - Mobile Only */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50 lg:hidden">
-        
-        {/* Premium Animated Hint Tooltip */}
-        <div 
-          className={`absolute right-full mr-5 top-1/2 -translate-y-1/2 w-52 bg-[#0a0f1a]/80 backdrop-blur-xl border border-white/10 text-gray-200 text-[13px] leading-snug font-medium p-3.5 rounded-2xl shadow-2xl transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none origin-right flex items-center gap-3
-            ${showFloatingHint ? "opacity-100 scale-100 translate-x-0" : "opacity-0 scale-90 translate-x-8"}
-          `}
-        >
-          {/* Pulsing Icon */}
-          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#05DF72]/10 border border-[#05DF72]/20 flex items-center justify-center relative">
-            <div className="absolute inset-0 rounded-full bg-[#05DF72]/20 animate-ping"></div>
-            <span className="text-sm relative z-10">💡</span>
-          </div>
-          
-          <div className="flex-1">
-            Click here anytime to <span className="text-[#05DF72] font-semibold">Quick Search</span>
-          </div>
-          
-          {/* Arrow pointing right */}
-          <div className="absolute top-1/2 -right-[6px] -translate-y-1/2 w-3 h-3 bg-[#0a0f1a] border-t border-r border-white/10 rotate-45"></div>
-        </div>
-
-        <a 
-          href={`https://www.google.com/search?q=${encodeURIComponent(dorkString)}`}
-          target="_blank"
-          rel="noreferrer"
-          title="Search Google"
-          className="flex items-center justify-center w-12 h-12 bg-[#0a0f1a] border border-white/10 rounded-full shadow-2xl hover:bg-[#121826] hover:border-white/20 transition-all hover:scale-105"
-        >
-          <img src="/google.svg" alt="Google" className="w-5 h-5 object-contain" />
-        </a>
-        <a 
-          href={`https://www.bing.com/search?q=${encodeURIComponent(dorkString)}`}
-          target="_blank"
-          rel="noreferrer"
-          title="Search Bing"
-          className="flex items-center justify-center w-12 h-12 bg-[#0a0f1a] border border-white/10 rounded-full shadow-2xl hover:bg-[#121826] hover:border-white/20 transition-all hover:scale-105"
-        >
-          <img src="/bing.svg" alt="Bing" className="w-6 h-6 object-contain" />
-        </a>
-      </div>
-    </main>
-  );
-}
+const homeFaq = [
+  { question: "What are hidden jobs?", answer: "Hidden jobs are unadvertised tech jobs and remote opportunities that are published directly to internal company career pages and Applicant Tracking Systems (ATS) like Greenhouse, Lever, and Workable. These positions often don't appear on major job boards like LinkedIn or Indeed until days later, or sometimes never at all, making them an untapped market for job seekers." },
+  { question: "How does JobDork work?", answer: "JobDork is a free boolean search generator that creates advanced Google dork queries to uncover hidden software engineering, product, and data science jobs. By applying specialized search operators (like site:lever.co or inurl:greenhouse.io), JobDork filters out recruiter spam and connects you directly to the original job postings on ATS platforms." },
+  { question: "Which ATS platforms does JobDork support?", answer: "JobDork allows you to search across the most popular Applicant Tracking Systems (ATS) used by top tech companies and startups. Our supported platforms include Greenhouse, Lever, Ashby, Workday, BambooHR, and SmartRecruiters. This ensures you can find remote and worldwide job listings before they get flooded with applications." },
+  { question: "Why aren't some jobs visible on major job boards?", answer: "Many tech companies and startups publish their latest open positions exclusively to their own ATS first to save on recruitment costs and avoid an overwhelming volume of applicants. By utilizing advanced search techniques and boolean job search strategies, you bypass the crowded job boards and discover these hidden tech jobs immediately upon publication." },
+  { question: "Is JobDork free to use?", answer: "Yes, JobDork is a completely free job search tool designed to help developers, engineers, and tech professionals discover publicly available but hidden job opportunities. We do not require an account, and we empower you to use advanced Google search operators to find remote, hybrid, and onsite roles instantly." }
+];
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-gray-500">Loading...</div>}>
-      <JobDorkContent />
-    </Suspense>
+    <>
+      <Suspense fallback={<div className="flex items-center justify-center min-h-[50vh] text-gray-500">Loading...</div>}>
+        <JobDorkContent key="home" />
+      </Suspense>
+
+      <section className="max-w-[1400px] w-full mx-auto px-3 sm:px-6 mt-6 mb-2">
+        <div className="flex items-center gap-4 mb-3 select-none">
+          <div className="flex-1 border-t border-dashed border-white/20"></div>
+          <span 
+            className="text-[10px] font-mono tracking-[0.3em] text-[#05DF72] uppercase font-bold"
+            style={{ textShadow: "0 0 10px rgba(5, 223, 114, 0.8), 0 0 20px rgba(5, 223, 114, 0.4)" }}
+          >
+            FOR SEO
+          </span>
+          <div className="flex-1 border-t border-dashed border-white/20"></div>
+        </div>
+        <h2 className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wide">Frequently Asked Questions</h2>
+        <FAQAccordion items={homeFaq} />
+      </section>
+
+      {/* FAQ Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": homeFaq.map(item => ({
+              "@type": "Question",
+              "name": item.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+              }
+            }))
+          })
+        }}
+      />
+    </>
   );
 }

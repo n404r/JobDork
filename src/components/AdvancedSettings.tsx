@@ -54,7 +54,7 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
             {visibleSources.map(s => {
               const isChecked = state.includedSources.includes(s.id);
               return (
-                <label key={s.id} className={`flex items-center gap-2 p-2 rounded-lg border bg-[#121826] cursor-pointer group transition-all
+                <label key={s.id} className={`flex items-start gap-2 p-2 rounded-lg border bg-[#121826] cursor-pointer group transition-all
                   ${isChecked ? "border-[#05DF72]" : "border-white/5 hover:border-white/20"}
                 `}>
                   <input 
@@ -63,20 +63,20 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
                     checked={isChecked} 
                     onChange={() => toggleSource(s.id)} 
                   />
-                  <div className={`flex-shrink-0 w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center transition-all ${
+                  <div className={`mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center transition-all ${
                     isChecked ? "bg-[#05DF72] border-[#05DF72]" : "bg-transparent border-white/20 group-hover:border-white/40"
                   }`}>
                     <Check className={`w-2.5 h-2.5 text-[#0a0f1a] transition-opacity ${isChecked ? "opacity-100" : "opacity-0"}`} strokeWidth={3} />
                   </div>
-                  <div className="flex items-center gap-1.5 flex-1 min-w-0">
+                  <div className="flex items-start gap-1.5 flex-1 min-w-0 mt-0.5">
                     {s.logo ? (
-                      <img src={s.logo} alt={s.name} className="w-3.5 h-3.5 object-contain" />
+                      <img src={s.logo} alt={s.name} className="w-3.5 h-3.5 object-contain flex-shrink-0" />
                     ) : (
                       <div className={`flex-shrink-0 w-3.5 h-3.5 rounded-[3px] flex items-center justify-center text-[0.5rem] font-bold ${isChecked ? 'bg-[#05DF72]/20 text-[#05DF72]' : 'bg-white/10 text-white/50'}`}>
                         {s.initial}
                       </div>
                     )}
-                    <span className={`text-xs font-medium truncate ${isChecked ? "text-[#05DF72]" : "text-gray-400"}`} title={s.name}>{s.name}</span>
+                    <span className={`text-[10px] sm:text-xs leading-snug font-medium break-words ${isChecked ? "text-[#05DF72]" : "text-gray-300 group-hover:text-gray-200"}`} title={s.name}>{s.name}</span>
                   </div>
                 </label>
               );
@@ -106,7 +106,7 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
             {visibleExclusions.map(p => {
               const isChecked = state.excludedBoards.includes(p.id);
               return (
-                <label key={p.id} className={`flex items-center gap-2 p-2 rounded-lg border bg-[#121826] cursor-pointer group transition-all
+                <label key={p.id} className={`flex items-start gap-2 p-2 rounded-lg border bg-[#121826] cursor-pointer group transition-all
                   ${isChecked ? "border-[#05DF72]" : "border-white/5 hover:border-white/20"}
                 `}>
                   <input 
@@ -115,20 +115,20 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
                     checked={isChecked} 
                     onChange={() => toggleExclusion(p.id)} 
                   />
-                  <div className={`flex-shrink-0 w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center transition-all ${
+                  <div className={`mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center transition-all ${
                     isChecked ? "bg-[#05DF72] border-[#05DF72]" : "bg-transparent border-white/20 group-hover:border-white/40"
                   }`}>
                     <Check className={`w-2.5 h-2.5 text-[#0a0f1a] transition-opacity ${isChecked ? "opacity-100" : "opacity-0"}`} strokeWidth={3} />
                   </div>
-                  <div className="flex items-center gap-1.5 flex-1 min-w-0">
+                  <div className="flex items-start gap-1.5 flex-1 min-w-0 mt-0.5">
                     {p.logo ? (
-                      <img src={p.logo} alt={p.name} className="w-3.5 h-3.5 object-contain" />
+                      <img src={p.logo} alt={p.name} className="w-3.5 h-3.5 object-contain flex-shrink-0" />
                     ) : (
                       <div className={`flex-shrink-0 w-3.5 h-3.5 rounded-[3px] flex items-center justify-center text-[0.5rem] font-bold ${isChecked ? 'bg-[#05DF72]/20 text-[#05DF72]' : 'bg-white/10 text-white/50'}`}>
                         {p.name[0]}
                       </div>
                     )}
-                    <span className={`text-xs font-medium truncate ${isChecked ? "text-[#05DF72]" : "text-gray-400"}`} title={p.name}>{p.name}</span>
+                    <span className={`text-[10px] sm:text-xs leading-snug font-medium break-words ${isChecked ? "text-[#05DF72]" : "text-gray-300 group-hover:text-gray-200"}`} title={p.name}>{p.name}</span>
                   </div>
                 </label>
               );
@@ -156,19 +156,19 @@ export function AdvancedSettings({ state, updateState }: AdvancedSettingsProps) 
             ].map(f => {
               const isChecked = state[f.key] as boolean;
               return (
-                <label key={f.id} className="flex items-center gap-2 cursor-pointer group">
+                <label key={f.id} className="flex items-start gap-2 cursor-pointer group">
                   <input 
                     type="checkbox" 
                     className="hidden" 
                     checked={isChecked} 
                     onChange={() => updateState({ [f.key]: !isChecked })} 
                   />
-                  <div className={`w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center transition-all ${
+                  <div className={`mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center transition-all ${
                     isChecked ? "bg-[#05DF72] border-[#05DF72]" : "bg-[#121826] border-white/20 group-hover:border-white/40"
                   }`}>
                     <Check className={`w-2.5 h-2.5 text-[#0a0f1a] transition-opacity ${isChecked ? "opacity-100" : "opacity-0"}`} strokeWidth={3} />
                   </div>
-                  <span className={`text-xs font-medium transition-colors ${isChecked ? "text-[#05DF72]" : "text-gray-400 group-hover:text-gray-300"}`}>
+                  <span className={`text-[10px] sm:text-xs leading-snug font-medium break-words transition-colors mt-0.5 ${isChecked ? "text-[#05DF72]" : "text-gray-300 group-hover:text-gray-200"}`}>
                     {f.label}
                   </span>
                 </label>

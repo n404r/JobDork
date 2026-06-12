@@ -1,0 +1,36 @@
+# JobDork
+**URL:** https://jobdork.tech
+**Description:** A boolean search (Google Dork) builder specifically designed to query Applicant Tracking Systems (ATS) for unlisted, stealth, or freshly posted tech jobs.
+
+## What it does
+JobDork automates the creation of complex Google Dork queries. Instead of a user manually constructing a search string like:
+`site:lever.co OR site:greenhouse.io "Software Engineer" "Remote" -senior`
+
+The user selects their role, location, and preferred ATS sources in the JobDork UI, and the tool compiles the exact Google or Bing search URL.
+
+## Why it exists (The Hidden Job Market)
+The vast majority of tech jobs are posted to a company's ATS (like Lever, Greenhouse, Workable, or Ashby) before they are syndicated to major job boards like LinkedIn or Indeed. Many jobs are NEVER syndicated because major boards charge high fees or attract too much spam.
+
+By searching the ATS domains directly using Google Dorks, job seekers can:
+1. Find jobs the exact day they are posted.
+2. Find stealth startup jobs that aren't advertised.
+3. Bypass algorithmic job board filters.
+
+## How to use JobDork
+1. Go to https://jobdork.tech
+2. Select your Role (e.g., Frontend Developer, Data Scientist, DevOps)
+3. Select your Location (e.g., Remote, San Francisco, London)
+4. Customize the ATS sources (Lever, Greenhouse, Ashby, Workable, etc.)
+5. Click "Search Google" or "Search Bing" to execute the dork query.
+
+## Supported ATS Platforms
+- Lever (`jobs.lever.co`)
+- Greenhouse (`boards.greenhouse.io`)
+- Workable (`apply.workable.com`)
+- Ashby (`jobs.ashbyhq.com`)
+- SmartRecruiters (`jobs.smartrecruiters.com`)
+- BreezyHR (`breezy.hr`)
+- BamboHR (`bamboohr.com/careers`)
+
+## Contact
+Open source and maintained by Nischay Raj. Contributions welcome at https://github.com/n404r/JobDork.
