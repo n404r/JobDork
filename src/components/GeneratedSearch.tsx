@@ -33,7 +33,7 @@ export function GeneratedSearch({ state, dorkString, onClear }: GeneratedSearchP
       <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-white/5 bg-white/[0.01]">
         <div>
           <h2 className="text-sm font-bold tracking-wide uppercase text-white flex items-center gap-2">
-            <span className="text-green-400 font-mono text-xs">04</span> Generated Search
+            Generated Search
           </h2>
         </div>
         
